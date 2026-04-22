@@ -1,22 +1,7 @@
 # trustos-sdk
 
 Minimal JavaScript SDK for the Trust OS API.
-
 Trust OS is a verification layer for decisions before execution.
-
-## npm
-
-https://www.npmjs.com/package/trust-os-sdk
-
----
-
-## Quick Start (1 line)
-
-```js
-const client = new (require("trustos-sdk").TrustOSClient)({ baseUrl: "https://api.trust-os.io", apiKey: "YOUR_API_KEY" });
-```
-
----
 
 This SDK provides a simple client for the core API flow:
 
@@ -25,29 +10,31 @@ This SDK provides a simple client for the core API flow:
 3. Verify its integrity  
 
 ---
-
 ## Installation
-
-```bash
 npm install trust-os-sdk
-```
 
 ---
+## npm
+https://www.npmjs.com/package/trust-os-sdk
 
+---
 ## Demo
-
 https://demo.trust-os.io
 
 ---
+## Quick Start (Production)
+const { execSync } = require("child_process");
+const { TrustOSClient } = require("trust-os-sdk");
 
-## Full Example
-
-```js
-const { TrustOSClient } = require("trustos-sdk");
+// Get GCP Identity Token
+const bearerToken = execSync("gcloud auth print-identity-token", {
+  encoding: "utf-8"
+}).trim();
 
 const client = new TrustOSClient({
-  baseUrl: "https://api.trust-os.io",
-  apiKey: "YOUR_API_KEY"
+  baseUrl: "https://trustos-api-591254547688.asia-northeast1.run.app",
+  apiKey: "YOUR_API_KEY",
+  bearerToken
 });
 
 async function run() {
@@ -60,104 +47,75 @@ async function run() {
     timestamp: new Date().toISOString()
   });
 
-  const ledger = await client.log({
+  const log = await client.log({
     decisionId: decision.decision_id
   });
 
   const verify = await client.verify(decision.decision_id);
-
-  console.log({ decision, ledger, verify });
+  console.log({ decision, log, verify });
 }
 
 run();
-```
 
 ---
-
 ## API Methods
 
 ### score()
 
-```js
 await client.score(payload)
-```
-
 Response:
-
-```json
 {
   "decision_id": "dec_xxx",
   "risk_level": "MEDIUM",
   "recommendation": "REVIEW"
 }
-```
 
 ---
-
 ### log()
 
-```js
 await client.log({ decisionId })
-```
-
 Response:
-
-```json
 {
   "ledger_id": "ledger_xxx",
   "status": "RECORDED"
 }
-```
 
 ---
-
 ### verify()
 
-```js
 await client.verify(decisionId)
-```
-
 Response:
-
-```json
 {
   "verified": true,
   "integrity": "VALID"
 }
-```
 
 ---
-
 ## Endpoints
 
-- POST /v1/decision/score  
-- POST /v1/decision/log  
-- GET /v1/decision/verify/:id  
+POST /v1/decision/score  
+POST /v1/decision/log  
+GET /v1/decision/verify/:id  
 
 ---
-
 ## Notes
 
-- API key required  
-- Internal logic is not exposed  
-- Minimal SDK for fast integration  
+API key required  
+GCP Identity Token required  
+Internal logic is not exposed  
+Minimal SDK for fast integration  
 
 ---
-
 ## Why this matters
 
 Most systems execute first and explain later.
-
 Trust OS flips that model:
-
-- verify before execution  
-- record decision  
-- prove integrity  
+verify before execution  
+record decision  
+prove integrity  
 
 ---
-
 ## Summary
-
 1. Score  
 2. Log  
 3. Verify  
