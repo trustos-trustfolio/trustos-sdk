@@ -4,6 +4,20 @@ Minimal JavaScript SDK for the Trust OS API.
 
 Trust OS is a verification layer for decisions before execution.
 
+## npm
+
+https://www.npmjs.com/package/trust-os-sdk
+
+---
+
+## Quick Start (1 line)
+
+```js
+const client = new (require("trustos-sdk").TrustOSClient)({ baseUrl: "https://api.trust-os.io", apiKey: "YOUR_API_KEY" });
+```
+
+---
+
 This SDK provides a simple client for the core API flow:
 
 1. Score a decision  
@@ -20,19 +34,13 @@ npm install trust-os-sdk
 
 ---
 
-## npm
-
-https://www.npmjs.com/package/trust-os-sdk
-
----
-
 ## Demo
 
 https://demo.trust-os.io
 
 ---
 
-## Quick Start
+## Full Example
 
 ```js
 const { TrustOSClient } = require("trustos-sdk");
