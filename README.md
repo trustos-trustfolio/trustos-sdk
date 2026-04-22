@@ -19,6 +19,12 @@ npm install trust-os-sdk
 
 ---
 
+## npm
+
+https://www.npmjs.com/package/trust-os-sdk
+
+---
+
 ## Quick Start
 
 ```js
