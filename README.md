@@ -18,6 +18,10 @@ npm install trust-os-sdk
 https://www.npmjs.com/package/trust-os-sdk
 
 ---
+## Example
+See example/basic.js for a working example.
+
+---
 ## Demo
 https://demo.trust-os.io
 
