@@ -1,35 +1,47 @@
 const fetch = require("node-fetch");
 
 class TrustOSClient {
-  constructor({ baseUrl, apiKey }) {
+  constructor({ baseUrl, apiKey, bearerToken }) {
     this.baseUrl = baseUrl;
     this.apiKey = apiKey;
+    this.bearerToken = bearerToken;
   }
-
   async request(path, method, body) {
+    const headers = {
+      "Content-Type": "application/json"
+    };
+
+    if (this.apiKey) {
+      headers["x-api-key"] = this.apiKey;
+    }
+
+    if (this.bearerToken) {
+      headers["Authorization"] = `Bearer ${this.bearerToken}`;
+    }
+
     const res = await fetch(`${this.baseUrl}${path}`, {
       method,
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": this.apiKey
-      },
+      headers,
       body: body ? JSON.stringify(body) : undefined
     });
 
     if (!res.ok) {
-      throw new Error(`HTTP ${res.status}`);
+      const text = await res.text();
+      throw new Error(`HTTP ${res.status}: ${text}`);
     }
-
+    
     return res.json();
   }
-
+  
   async score(payload) {
     return this.request("/v1/decision/score", "POST", payload);
   }
-
-  async log({ decisionId }) {
+  
+  async log({ decisionId, riskScore, recommendation }) {
     return this.request("/v1/decision/log", "POST", {
-      decision_id: decisionId
+      decision_id: decisionId,
+      ...(riskScore !== undefined ? { risk_score: riskScore } : {}),
+      ...(recommendation !== undefined ? { recommendation: recommendation } : {})
     });
   }
 
