@@ -14,11 +14,9 @@ This SDK provides a simple client for the core API flow:
 
 ## Installation
 
-```bash
-npm install trustos-sdk
-```
+This package will be available via npm soon.
 
-If not published yet, use locally.
+For now, you can copy the SDK locally or use the source directly from this repository.
 
 ---
 
