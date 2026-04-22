@@ -6,42 +6,34 @@ class TrustOSClient {
     this.apiKey = apiKey;
     this.bearerToken = bearerToken;
   }
+  
   async request(path, method, body) {
-    const headers = {
-      "Content-Type": "application/json"
-    };
-
-    if (this.apiKey) {
-      headers["x-api-key"] = this.apiKey;
-    }
-
-    if (this.bearerToken) {
-      headers["Authorization"] = `Bearer ${this.bearerToken}`;
-    }
-
     const res = await fetch(`${this.baseUrl}${path}`, {
       method,
-      headers,
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": this.apiKey,
+        ...(this.bearerToken && {
+          Authorization: `Bearer ${this.bearerToken}`
+        })
+      },
       body: body ? JSON.stringify(body) : undefined
     });
 
     if (!res.ok) {
-      const text = await res.text();
-      throw new Error(`HTTP ${res.status}: ${text}`);
+      throw new Error(`HTTP ${res.status}`);
     }
-    
+
     return res.json();
   }
-  
+
   async score(payload) {
     return this.request("/v1/decision/score", "POST", payload);
   }
-  
-  async log({ decisionId, riskScore, recommendation }) {
+
+  async log({ decisionId }) {
     return this.request("/v1/decision/log", "POST", {
-      decision_id: decisionId,
-      ...(riskScore !== undefined ? { risk_score: riskScore } : {}),
-      ...(recommendation !== undefined ? { recommendation: recommendation } : {})
+      decision_id: decisionId
     });
   }
 
