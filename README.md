@@ -14,9 +14,8 @@ This SDK provides a simple client for the core API flow:
 
 ## Installation
 
-This package will be available via npm soon.
-
-For now, you can copy the SDK locally or use the source directly from this repository.
+```bash
+npm install trust-os-sdk
 
 ---
 
