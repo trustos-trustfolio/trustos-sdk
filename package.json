@@ -1,9 +1,22 @@
 {
-  "name": "trustos-sdk",
+  "name": "trust-os-sdk",
   "version": "1.0.0",
-  "description": "Trust OS JavaScript SDK",
+  "description": "Minimal JavaScript SDK for the Trust OS API",
   "main": "src/index.js",
   "license": "MIT",
+  "keywords": [
+    "trust",
+    "api",
+    "sdk",
+    "verification",
+    "fintech",
+    "ai"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trustos-trustfolio/trustos-sdk.git"
+  },
+  "author": "Trustfolio",
   "dependencies": {
     "node-fetch": "^2.6.7"
   }
