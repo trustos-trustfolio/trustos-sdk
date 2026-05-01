@@ -25,8 +25,10 @@ const client = new TrustOSClient({
   console.log("decision:", decision);
 
   const log = await client.log({
-    decisionId: decision.decision_id
-  });
+  decisionId: decision.decision_id,
+  riskScore: decision.risk_score,
+  recommendation: decision.recommendation
+});
 
   console.log("log:", log);
   const verify = await client.verify(decision.decision_id);
