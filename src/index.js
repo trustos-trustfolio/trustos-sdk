@@ -31,11 +31,13 @@ class TrustOSClient {
     return this.request("/v1/decision/score", "POST", payload);
   }
 
-  async log({ decisionId }) {
-    return this.request("/v1/decision/log", "POST", {
-      decision_id: decisionId
-    });
-  }
+  async log({ decisionId, riskScore, recommendation }) {
+  return this.request("/v1/decision/log", "POST", {
+    decision_id: decisionId,
+    risk_score: riskScore,
+    recommendation
+  });
+}
 
   async verify(decisionId) {
     return this.request(`/v1/decision/verify/${decisionId}`, "GET");
