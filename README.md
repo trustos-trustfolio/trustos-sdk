@@ -52,8 +52,10 @@ async function run() {
   });
 
   const log = await client.log({
-    decisionId: decision.decision_id
-  });
+  decisionId: decision.decision_id,
+  riskScore: decision.risk_score,
+  recommendation: decision.recommendation
+});
 
   const verify = await client.verify(decision.decision_id);
   console.log({ decision, log, verify });
@@ -77,7 +79,7 @@ Response:
 ---
 ### log()
 
-await client.log({ decisionId })
+await client.log({ decisionId, riskScore, recommendation })
 Response:
 {
   "ledger_id": "ledger_xxx",
@@ -108,6 +110,8 @@ API key required
 GCP Identity Token required  
 Internal logic is not exposed  
 Minimal SDK for fast integration  
+
+For real-time payment authorization use cases, scoring is designed to stay on the synchronous decision path, while logging and verification can be handled outside the critical execution path.
 
 ---
 ## Why this matters
