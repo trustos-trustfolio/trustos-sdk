@@ -1,6 +1,6 @@
 {
   "name": "trust-os-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Minimal JavaScript SDK for the Trust OS API",
   "main": "src/index.js",
   "license": "MIT",
