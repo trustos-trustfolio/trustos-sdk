@@ -2,7 +2,7 @@
 
 // AI agent high-impact action — verify before allowing tool execution
 
-const { TrustOSClient } = require("../src/index");
+const { TrustOSClient } = require("@trust-os-sdk/trust-os-sdk");
 
 const client = new TrustOSClient({
   apiKey: process.env.TRUST_OS_API_KEY
