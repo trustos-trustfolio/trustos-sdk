@@ -1,0 +1,29 @@
+{
+  "name": "trust-os-sdk",
+  "version": "1.0.2",
+  "description": "JavaScript SDK for the Trust OS decision verification API",
+  "main": "src/index.js",
+  "license": "MIT",
+  "keywords": [
+    "trust-os",
+    "decision-verification",
+    "ai-governance",
+    "stablecoin",
+    "compliance",
+    "audit",
+    "risk",
+    "sdk"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trustos-trustfolio/trustos-sdk.git"
+  },
+  "files": [
+    "src/",
+    "examples/",
+    "README.md"
+  ],
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
