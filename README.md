@@ -17,7 +17,7 @@ Trust OS flips that model:
 ## Installation
 
 ```sh
-npm install trust-os-sdk
+npm install @trust-os-sdk/trust-os-sdk
 ```
 
 ---
@@ -25,7 +25,7 @@ npm install trust-os-sdk
 ## Quick Start
 
 ```js
-const { TrustOSClient } = require("trust-os-sdk");
+const { TrustOSClient } = require("@trust-os-sdk/trust-os-sdk");
 
 const client = new TrustOSClient({
   apiKey: process.env.TRUST_OS_API_KEY
