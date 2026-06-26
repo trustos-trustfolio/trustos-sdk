@@ -1,6 +1,6 @@
 {
   "name": "trust-os-sdk",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "JavaScript SDK for the Trust OS decision verification API",
   "main": "src/index.js",
   "license": "MIT",
