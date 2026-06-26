@@ -1,6 +1,19 @@
+# Trust OS
+
+Decision Verification Infrastructure for Financial Operations.
+
+Verify high-impact decisions before execution.
+
+- Website: https://trust-os.io
+- Developer Playground: https://demo.trust-os.io
+- Financial Operations Demo: https://ops.trust-os.io
+- SDK npm: https://www.npmjs.com/package/@trust-os-sdk/trust-os-sdk
+
+---
+
 # Trust OS SDK
 
-JavaScript SDK for the Trust OS decision verification API.
+Official JavaScript SDK for the Trust OS Decision Verification API.
 
 ---
 
@@ -205,7 +218,8 @@ Contact: admin@trust-os.io
 
 ## Links
 
-- Operational Demo: [ops.trust-os.io](https://ops.trust-os.io)
-- Developer Demo: [demo.trust-os.io](https://demo.trust-os.io)
-- npm: [npmjs.com/package/trust-os-sdk](https://www.npmjs.com/package/trust-os-sdk)
-- GitHub: [github.com/trustos-trustfolio/trustos-sdk](https://github.com/trustos-trustfolio/trustos-sdk)
+- Website: [trust-os.io](https://trust-os.io)
+- Developer Playground: [demo.trust-os.io](https://demo.trust-os.io)
+- Financial Operations Demo: [ops.trust-os.io](https://ops.trust-os.io)
+- npm: [@trust-os-sdk/trust-os-sdk](https://www.npmjs.com/package/@trust-os-sdk/trust-os-sdk)
+- GitHub: [trustos-trustfolio/trustos-sdk](https://github.com/trustos-trustfolio/trustos-sdk)
