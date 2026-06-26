@@ -1,5 +1,5 @@
 {
-  "name": "trust-os-sdk",
+  "name": "@trust-os-sdk/trust-os-sdk",
   "version": "1.1.0",
   "description": "JavaScript SDK for the Trust OS decision verification API",
   "main": "src/index.js",
