@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/trustos-trustfolio/trustos-sdk.git"
+    "url": "git+https://github.com/trustos-trustfolio/trustos-sdk.git"
   },
   "files": [
     "src/",
