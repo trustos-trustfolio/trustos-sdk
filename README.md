@@ -223,3 +223,35 @@ Contact: admin@trust-os.io
 - Financial Operations Demo: [ops.trust-os.io](https://ops.trust-os.io)
 - npm: [@trust-os-sdk/trust-os-sdk](https://www.npmjs.com/package/@trust-os-sdk/trust-os-sdk)
 - GitHub: [trustos-trustfolio/trustos-sdk](https://github.com/trustos-trustfolio/trustos-sdk)
+
+---
+
+## Security
+
+Do not include API keys, secrets, or credentials in issues, pull requests, or commits.
+
+To report a security vulnerability, email **founder@trust-os.io** privately — do not open a public issue.
+
+See [SECURITY.md](SECURITY.md) for the full policy.
+
+---
+
+## Contributing
+
+Issues, documentation improvements, and SDK examples are welcome.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. No API key is required to contribute to examples or docs.
+
+---
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for the full history.
+
+**v1.0.0** — Initial public developer platform release (June 2026).
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE).
