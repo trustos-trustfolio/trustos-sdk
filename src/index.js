@@ -2,7 +2,7 @@
 
 const fetch = require("node-fetch");
 
-const PRODUCTION_API = "https://trustos-core-gateway-v2-7jm9owrs.an.gateway.dev";
+const PRODUCTION_API = "https://api.trust-os.io";
 const DEFAULT_TIMEOUT = 10000;
 
 class TrustOSClient {
