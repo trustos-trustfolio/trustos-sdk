@@ -12,12 +12,12 @@ const client = new TrustOSClient({
   const result = await client.verifyDecision({
     transaction_id: "agent_action_" + Date.now(),
     action: "execute_tool",
-    tool_name: "database_write",
+    tool_name: "write_operation",
     agent_id: "agent_prod_01",
     risk_context: {
       impact: "high",
       reversible: false,
-      scope: "production_database",
+      scope: "production_system",
       affected_records: 15000
     },
     approval_required: true,

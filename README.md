@@ -181,7 +181,7 @@ Verify cross-border stablecoin transfers against compliance and risk policy befo
 
 ### AI agent action verification
 
-Gate high-impact agent tool use — database writes, API calls, code execution — with a pre-execution decision check.
+Gate high-impact agent tool use — writes, API calls, code execution — with a pre-execution decision check.
 
 ### DAO treasury verification
 
