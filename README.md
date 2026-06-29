@@ -1,16 +1,3 @@
-# Trust OS
-
-Decision Verification Infrastructure for Financial Operations.
-
-Verify high-impact decisions before execution.
-
-- Website: https://trust-os.io
-- Developer Playground: https://demo.trust-os.io
-- Financial Operations Demo: https://ops.trust-os.io
-- SDK npm: https://www.npmjs.com/package/@trust-os-sdk/trust-os-sdk
-
----
-
 # Trust OS SDK
 
 Official JavaScript SDK for the Trust OS Decision Verification API.
@@ -19,23 +6,31 @@ Official JavaScript SDK for the Trust OS Decision Verification API.
 
 ## What is Trust OS?
 
-Trust OS verifies high-impact decisions before execution.
+Trust OS is a Decision Verification Platform that helps organizations verify high-impact decisions before execution.
 
-Most systems execute first and explain later.  
-Trust OS flips that model:  
-**Verify before execution.**
+- Decision verification
+- Risk evaluation
+- Policy enforcement
+- Auditability
+- Explainability
+- API-first integration
 
 ---
 
-## Installation
+## Features
 
-```sh
-npm install @trust-os-sdk/trust-os-sdk
-```
+- Simple API client
+- TypeScript support
+- Promise-based API
+- Error handling
 
 ---
 
 ## Quick Start
+
+```sh
+npm install @trust-os-sdk/trust-os-sdk
+```
 
 ```js
 const { TrustOSClient } = require("@trust-os-sdk/trust-os-sdk");
@@ -45,103 +40,37 @@ const client = new TrustOSClient({
 });
 
 const result = await client.verifyDecision({
-  transaction_id: "txn_001",
-  action: "transfer",
+  action: "stablecoin_transfer",
   amount: 50000,
   currency: "USDC",
-  destination: "wallet_0xabcdef",
-  timestamp: new Date().toISOString()
+  destination: "wallet_abc"
 });
 
-console.log(result);
-// { decision_id: "dec_xxx", recommendation: "APPROVE", risk_level: "LOW", ... }
+console.log(result.recommendation); // APPROVE | REVIEW | DENY
 ```
 
----
-
-## Production API
-
-```
-https://trustos-core-gateway-v2-7jm9owrs.an.gateway.dev
-```
-
-This is the default endpoint. No configuration required unless you are using a private deployment.
-
----
-
-## Authentication
-
-All requests require an API key passed via the `x-api-key` header.
-
-```js
-const client = new TrustOSClient({
-  apiKey: process.env.TRUST_OS_API_KEY
-});
-```
-
-API keys are provisioned during onboarding. Request early access at [trust-os.io](https://trust-os.io).
+API keys are provisioned by invitation. Request early access at [trust-os.io](https://trust-os.io).
 
 ---
 
 ## SDK Usage
 
-### verifyDecision(payload)
+### `verifyDecision(payload)`
 
-Submit a decision payload for verification. Returns a recommendation and risk assessment.
+Submit a decision for verification. Returns a recommendation and risk assessment.
 
 ```js
 const result = await client.verifyDecision({
-  transaction_id: "txn_001",
-  action: "transfer",
+  action: "stablecoin_transfer",
   amount: 50000,
   currency: "USDC",
-  destination: "wallet_0xabcdef",
-  timestamp: new Date().toISOString()
+  destination: "wallet_abc"
 });
 ```
 
-### verify(payload)
+### `verify(payload)`
 
 Alias for `verifyDecision()`.
-
-```js
-const result = await client.verify(payload);
-```
-
----
-
-## REST API Example
-
-```sh
-curl -X POST https://trustos-core-gateway-v2-7jm9owrs.an.gateway.dev/v1/decision/verify \
-  -H "Content-Type: application/json" \
-  -H "x-api-key: YOUR_API_KEY" \
-  -d '{
-    "transaction_id": "txn_001",
-    "action": "transfer",
-    "amount": 50000,
-    "currency": "USDC",
-    "destination": "wallet_0xabcdef",
-    "timestamp": "2024-01-01T00:00:00.000Z"
-  }'
-```
-
----
-
-## Response Example
-
-```json
-{
-  "decision_id": "dec_a1b2c3d4",
-  "recommendation": "APPROVE",
-  "risk_level": "LOW",
-  "verified": true,
-  "latency_ms": 142,
-  "timestamp": "2024-01-01T00:00:00.000Z"
-}
-```
-
-Possible `recommendation` values: `APPROVE`, `REVIEW`, `BLOCK`, `ESCALATE`
 
 ---
 
@@ -157,11 +86,6 @@ try {
 }
 ```
 
-Errors include:
-- `err.message` — description with HTTP status
-- `err.status` — HTTP status code
-- `err.body` — parsed response body (when available)
-
 Requests time out after 10 seconds by default. Configure with `timeout`:
 
 ```js
@@ -173,34 +97,12 @@ const client = new TrustOSClient({
 
 ---
 
-## Use Cases
-
-### Stablecoin payment verification
-
-Verify cross-border stablecoin transfers against compliance and risk policy before on-chain execution.
-
-### AI agent action verification
-
-Gate high-impact agent tool use — writes, API calls, code execution — with a pre-execution decision check.
-
-### DAO treasury verification
-
-Validate governance parameters (quorum, timelock, multisig) before treasury disbursements.
-
-### Compliance workflow approval
-
-Route decisions through policy evaluation for regulated industries: finance, healthcare, legal.
-
----
-
 ## Examples
 
 - [`examples/basic.js`](examples/basic.js) — minimal integration
-- [`examples/stablecoin-payment.js`](examples/stablecoin-payment.js) — cross-border stablecoin transfer
-- [`examples/ai-agent-action.js`](examples/ai-agent-action.js) — AI agent high-impact action gate
+- [`examples/stablecoin-payment.js`](examples/stablecoin-payment.js) — stablecoin transfer
+- [`examples/ai-agent-action.js`](examples/ai-agent-action.js) — AI agent action gate
 - [`examples/dao-treasury.js`](examples/dao-treasury.js) — DAO treasury disbursement
-
-Run an example:
 
 ```sh
 TRUST_OS_API_KEY=your_key node examples/basic.js
@@ -208,50 +110,14 @@ TRUST_OS_API_KEY=your_key node examples/basic.js
 
 ---
 
-## Early Access
+## Documentation
 
-Trust OS is in private beta. API keys are provisioned by invitation.
-
-Contact: admin@trust-os.io
-
----
-
-## Links
-
-- Website: [trust-os.io](https://trust-os.io)
-- Developer Playground: [demo.trust-os.io](https://demo.trust-os.io)
-- Financial Operations Demo: [ops.trust-os.io](https://ops.trust-os.io)
-- npm: [@trust-os-sdk/trust-os-sdk](https://www.npmjs.com/package/@trust-os-sdk/trust-os-sdk)
-- GitHub: [trustos-trustfolio/trustos-sdk](https://github.com/trustos-trustfolio/trustos-sdk)
-
----
-
-## Security
-
-Do not include API keys, secrets, or credentials in issues, pull requests, or commits.
-
-To report a security vulnerability, email **founder@trust-os.io** privately — do not open a public issue.
-
-See [SECURITY.md](SECURITY.md) for the full policy.
-
----
-
-## Contributing
-
-Issues, documentation improvements, and SDK examples are welcome.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. No API key is required to contribute to examples or docs.
-
----
-
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for the full history.
-
-**v1.0.0** — Initial public developer platform release (June 2026).
+- Website: https://trust-os.io
+- Developer Docs: https://trust-os.io/docs
+- OpenAPI: https://trust-os.io/openapi.json
 
 ---
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT
