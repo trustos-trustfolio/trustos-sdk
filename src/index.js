@@ -77,6 +77,10 @@ class TrustOSClient {
   async verify(payload) {
     return this.verifyDecision(payload);
   }
+
+  async createDecision({ decision, approver, policy, metadata } = {}) {
+    return this.request("/decision", "POST", { decision, approver, policy, metadata });
+  }
 }
 
 module.exports = { TrustOSClient };
